@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import gql from 'graphql-tag';
 import { Query, ApolloProvider } from 'react-apollo';
+import PlayerStats from './PlayerStats';
 
 const PLAYER_QUERY = gql`
   query PlayerQuery($search: String!) {
@@ -32,10 +33,18 @@ class SearchBar extends Component {
   }
 
   handleSearchChange(event) {
-    this.setState({
-      search: event.target.value,
-      submitted: false
-    });
+    if (event.target.value.length > 2) {
+      this.setState({
+        search: event.target.value,
+        submitted: true
+      });
+    }
+    else {
+      this.setState({
+        search: event.target.value,
+        submitted: false
+      });
+    }
   }
 
   handleSubmit(event) {
@@ -63,18 +72,21 @@ class SearchBar extends Component {
           />
         </form>
         {this.state.submitted ? <Query query={PLAYER_QUERY} variables = {{ search: this.state.search }}>
-              {({ loading, error, data }) => {
-                if (loading) return <h4>Loading...</h4>;
-                if (error) console.log(error);
+          {({ loading, error, data }) => {
+            if (loading) return <h4>Loading...</h4>;
+            if (error) console.log(error);
 
-                return (
+            return (
+              <div>
+                {data.activePlayerSearch.map(player => (
                   <div>
-                    {data.activePlayerSearch.map(player => (
-                      <div>{player.id}. {player.first_name} {player.last_name}: {player.team.full_name}</div>
-                    ))}
+                    {player.id}. {player.first_name} {player.last_name}: {player.team.full_name}
+                    <PlayerStats key={player.id} player={player} />
                   </div>
-                );
-              }}
+                ))}
+              </div>
+            );
+          }}
         </Query> : null}
       </div>
     );
