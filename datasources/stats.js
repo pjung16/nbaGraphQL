@@ -62,6 +62,7 @@ class StatsAPI extends RESTDataSource {
     if (end_date) {
       queryParams += `end_date=${end_date}&`
     }
+    queryParams += `per_page=100&`
     postseason ? queryParams += "postseason=true" : "postseason=false"
     return queryParams;
   }

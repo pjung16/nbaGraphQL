@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 import { Query, ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-boost';
 import SearchBar from './SearchBar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const client = new ApolloClient({
   uri: '/graphql'

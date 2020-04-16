@@ -79,7 +79,7 @@ class SearchBar extends Component {
             return (
               <div>
                 {data.activePlayerSearch.map(player => (
-                  <div>
+                  <div key={player.id}>
                     {player.id}. {player.first_name} {player.last_name}: {player.team.full_name}
                     <PlayerStats key={player.id} player={player} />
                   </div>
