@@ -1,0 +1,31 @@
+.searchbar {
+  font-family: Lato;
+}
+
+.search-field {
+  background-color: #343A40;
+  color: #C4C4C4;
+  border: none;
+  height: 70px;
+  width: 850px;
+  padding-left: 15px;
+  font-size: 36px;
+  font-family: Lato;
+}
+
+.add-button {
+  background-color: #67DBF9;
+  color: #343A40;
+  border: none;
+  height: 70px;
+  font-size: 36px;
+  font-family: Lato;
+}
+
+label {
+  margin-bottom: 0 !important;
+}
+
+.dropdown {
+  position: absolute;
+}

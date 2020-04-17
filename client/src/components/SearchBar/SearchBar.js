@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
+import './SearchBar.css';
 import gql from 'graphql-tag';
 import { Query, ApolloProvider } from 'react-apollo';
-import PlayerStats from './PlayerStats';
+import PlayerStats from '../PlayerStats/PlayerStats';
 
 const PLAYER_QUERY = gql`
   query PlayerQuery($search: String!) {
@@ -56,32 +57,34 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div>
+      <div className="searchbar">
         <form onSubmit={this.handleSubmit}>
           <label>
             <input
               type={'text'}
               value={this.state.search}
               onChange={this.handleSearchChange}
-              placeholder={'Search for a player'}
+              placeholder={'Add a player to compare...'}
+              className="search-field"
             />
           </label>
           <input 
             type="submit" 
             value="Search" 
+            className="add-button"
           />
         </form>
         {this.state.submitted ? <Query query={PLAYER_QUERY} variables = {{ search: this.state.search }}>
           {({ loading, error, data }) => {
-            if (loading) return <h4>Loading...</h4>;
+            if (loading) return <h4 className="dropdown">Loading...</h4>;
             if (error) console.log(error);
 
             return (
-              <div>
+              <div className="dropdown">
                 {data.activePlayerSearch.map(player => (
                   <div key={player.id}>
                     {player.id}. {player.first_name} {player.last_name}: {player.team.full_name}
-                    <PlayerStats key={player.id} player={player} />
+                    {/* <PlayerStats key={player.id} player={player} /> */}
                   </div>
                 ))}
               </div>
