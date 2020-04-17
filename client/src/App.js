@@ -19,11 +19,6 @@ function App() {
         <Router>
           <ModalSwitch />
         </Router>
-        <header className="App-header">
-          <h1>Players</h1>
-          {/* <SearchBar />
-          <img src={logo} className="App-logo" alt="logo" /> */}
-        </header>
       </div>
     </ApolloProvider>
   );

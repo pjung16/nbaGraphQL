@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import './SearchBar.css';
 import gql from 'graphql-tag';
 import { Query, ApolloProvider } from 'react-apollo';
+import { connect } from 'react-redux';
+import { addPlayer } from '../../actions/playerActions'
 import PlayerStats from '../PlayerStats/PlayerStats';
 
 const PLAYER_QUERY = gql`
@@ -31,6 +33,7 @@ class SearchBar extends Component {
 
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.playerClicked = this.playerClicked.bind(this);
   }
 
   handleSearchChange(event) {
@@ -55,7 +58,13 @@ class SearchBar extends Component {
     });
   }
 
+  playerClicked(event) {
+    console.log(event.target)
+  }
+
   render() {
+    const { dispatch } = this.props;
+
     return (
       <div className="searchbar">
         <form onSubmit={this.handleSubmit}>
@@ -76,15 +85,20 @@ class SearchBar extends Component {
         </form>
         {this.state.submitted ? <Query query={PLAYER_QUERY} variables = {{ search: this.state.search }}>
           {({ loading, error, data }) => {
-            if (loading) return <h4 className="dropdown">Loading...</h4>;
+            if (loading) return null;
             if (error) console.log(error);
 
             return (
               <div className="dropdown">
                 {data.activePlayerSearch.map(player => (
-                  <div key={player.id}>
-                    {player.id}. {player.first_name} {player.last_name}: {player.team.full_name}
-                    {/* <PlayerStats key={player.id} player={player} /> */}
+                  <div key={player.id} className="dropdown-item" onClick={() => {
+                    dispatch(addPlayer(player));
+                    this.setState({
+                      search: '',
+                      submitted: false
+                    });
+                  }}>
+                    {player.first_name} {player.last_name}: {player.team.full_name}
                   </div>
                 ))}
               </div>
@@ -96,4 +110,4 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+export default connect()(SearchBar);

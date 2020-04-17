@@ -28,4 +28,15 @@ label {
 
 .dropdown {
   position: absolute;
+  border: #ffffff 1px solid;
+  width: 865px;
+}
+
+.dropdown-item {
+  height: 70px;
+  border-top: #ffffff 1px solid;
+  background-color: #343A40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,0 +1,5 @@
+.player-stats-block {
+  width: 30%;
+  overflow-y: scroll;
+  height: 80vh;
+}
