@@ -2,7 +2,8 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
     type Query {
-        players: [Player]!
+        allPlayers: [Player]!
+        players(playerIds: [ID]): [Player]!
         player(id: ID!): Player
         playerSearch(search: String!): [Player]!
         activePlayerSearch(search: String!): [Player]!

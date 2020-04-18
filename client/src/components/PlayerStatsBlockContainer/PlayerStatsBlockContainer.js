@@ -1,5 +1,5 @@
-import { connect } from 'react-redux'
-import PlayerStatsBlock from '../PlayerStatsBlock/PlayerStatsBlock'
+import { connect } from 'react-redux';
+import PlayerStatsBlock from '../PlayerStatsBlock/PlayerStatsBlock';
 
 const getAllPlayers = (players) => {
   return players

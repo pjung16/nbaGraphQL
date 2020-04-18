@@ -2,7 +2,6 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import './PlayerStats.css';
-import Table from 'react-bootstrap/Table';
 
 const STATS_QUERY = gql`
   query SeasonAverageQuery($playerId: ID!) {
@@ -118,17 +117,17 @@ function PlayerStats({player: {id}}) {
             </div>
           );
         }}
-        </Query>
-        <Query query={STAT_QUERY} variables = {{"playerId": id}}>
+      </Query>
+      {/* <Query query={STAT_QUERY} variables = {{"playerId": id}}>
         {({ loading, error, data }) => {
-          if (loading) return <h4>Loading...</h4>;
+          if (loading) return null;
           if (error) console.log(error);
           console.log(data.stats.sort(function(a, b) {
             return (a.game.date > b.game.date) ? -1 : ((a.game.date < b.game.date) ? 1 : 0);
-        }))
+          }))
           return null
         }}
-        </Query>
+      </Query> */}
     </div>
   )
 } 

@@ -1,7 +1,9 @@
 module.exports = {
   Query: {
-    players: (_, __, { dataSources }) =>
+    allPlayers: (_, __, { dataSources }) =>
       dataSources.playerAPI.getAllPlayers(),
+    players: (_, { playerIds }, { dataSources }) =>
+      dataSources.playerAPI.getPlayersById({ playerIds: playerIds }),
     player: (_, { id }, { dataSources }) =>
       dataSources.playerAPI.getPlayerById({ playerId: id }),
     playerSearch: (_, { search }, { dataSources }) =>

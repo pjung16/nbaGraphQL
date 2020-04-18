@@ -1,8 +1,7 @@
 import React from 'react';
 import Header from '../Header/Header';
 import PlayerStatsBlockContainer from '../PlayerStatsBlockContainer/PlayerStatsBlockContainer';
-import Graph from '../Graph/Graph';
-import logo from '../../logo.svg';
+import GraphContainer from '../GraphContainer/GraphContainer';
 import './Home.css';
 
 function Home() {
@@ -11,7 +10,7 @@ function Home() {
       <Header />
       <div className="blocks-container">
         <PlayerStatsBlockContainer />
-        <Graph />
+        <GraphContainer />
       </div>
     </div>
   );

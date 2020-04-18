@@ -5,10 +5,6 @@ class PlayerAPI extends RESTDataSource {
     super();
     this.baseURL = 'https://www.balldontlie.io/api/v1/';
   }
-  async getAllPlayers() {
-    const response = await this.get('players');
-    return response.data.map(player => this.playerReducer(player));
-  }
 
   playerReducer(player) {
     return {
@@ -30,9 +26,28 @@ class PlayerAPI extends RESTDataSource {
       }
     };
   }
+
+  async getAllPlayers() {
+    const response = await this.get('players');
+    return response.data.map(player => this.playerReducer(player));
+  }
+
   async getPlayerById({ playerId }) {
     const response = await this.get(`players/${playerId}`);
     return this.playerReducer(response);
+  }
+
+  async getPlayerData(playerIds) {
+
+  }
+
+  async getPlayersById({ playerIds }) {
+    const response = []
+    for (const id of playerIds) {
+      let res = await this.get(`players/${id}`);
+      response.push(res)
+    }
+    return response.map(player => this.playerReducer(player));
   }
 
   async getPlayerBySearch({ search }) {
@@ -108,5 +123,8 @@ class PlayerAPI extends RESTDataSource {
   }
 
 }
+
+// const a = new PlayerAPI();
+// console.log(a.getPlayersById({ playerIds: [237, 355]}))
 
 module.exports = PlayerAPI;

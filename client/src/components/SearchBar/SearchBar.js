@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import './SearchBar.css';
 import gql from 'graphql-tag';
-import { Query, ApolloProvider } from 'react-apollo';
+import { Query } from 'react-apollo';
 import { connect } from 'react-redux';
-import { addPlayer } from '../../actions/playerActions'
-import PlayerStats from '../PlayerStats/PlayerStats';
+import { addPlayer } from '../../actions/playerActions';
+import { updateGraphOptions } from '../../actions/graphActions';
 
 const PLAYER_QUERY = gql`
   query PlayerQuery($search: String!) {
@@ -22,6 +22,31 @@ const PLAYER_QUERY = gql`
     }
   }
 `;
+
+const STATS_QUERY = gql`
+    query PlayerQuery($playerIds: [ID!]) {
+      stats (playerIds: $playerIds, seasons: [2019]) {
+        min
+        pts
+        reb
+        ast
+        stl
+        blk
+        fg_pct
+        fg3_pct
+        ft_pct
+        turnover
+        player {
+          first_name
+          last_name
+          id
+        }
+        game {
+          date
+        }
+      }
+    }
+  `;
 
 class SearchBar extends Component {
   constructor(props) {
@@ -62,6 +87,25 @@ class SearchBar extends Component {
     console.log(event.target)
   }
 
+  organizePlayerStats = (stats) => {
+    let playerStats = {};
+    stats.forEach((cur) => {
+      if (!playerStats[cur.player.id]) {
+        playerStats[cur.player.id] = [cur]
+      } else {
+        playerStats[cur.player.id].push(cur)
+      }
+    });
+    return Object.entries(playerStats).map(cur => {
+      return {
+        id: cur[0],
+        stats: cur[1].sort(function(a, b) {
+          return (a.game.date < b.game.date) ? -1 : ((a.game.date > b.game.date) ? 1 : 0);
+        }).slice(Math.max(cur[1].length - 8, 1))
+      }
+    })
+  }
+
   render() {
     const { dispatch } = this.props;
 
@@ -91,15 +135,31 @@ class SearchBar extends Component {
             return (
               <div className="dropdown">
                 {data.activePlayerSearch.map(player => (
-                  <div key={player.id} className="dropdown-item" onClick={() => {
-                    dispatch(addPlayer(player));
-                    this.setState({
-                      search: '',
-                      submitted: false
-                    });
-                  }}>
-                    {player.first_name} {player.last_name}: {player.team.full_name}
-                  </div>
+                  <Query query={STATS_QUERY} variables = {{ playerIds: [player.id] }}>
+                    {({ loading, error, data }) => {
+                      if (loading) return null;
+                      if (error) console.log(error);
+                      let playerRecentStats = {};
+                      if (data) {
+                        const playerStats = this.organizePlayerStats(data.stats);
+                        playerStats.forEach(cur => {
+                          let obj = { name: cur.id }
+                          obj.data = cur.stats.map(d => d.pts);
+                          playerRecentStats = obj
+                        })
+                      }
+                      return (<div key={player.id} className="dropdown-item" onClick={() => {
+                        dispatch(addPlayer(player));
+                        dispatch(updateGraphOptions(playerRecentStats));
+                        this.setState({
+                          search: '',
+                          submitted: false
+                        });
+                      }}>
+                        {player.first_name} {player.last_name}: {player.team.full_name}
+                      </div>)
+                    }}
+                  </Query>
                 ))}
               </div>
             );

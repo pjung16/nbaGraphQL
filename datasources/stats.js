@@ -68,9 +68,16 @@ class StatsAPI extends RESTDataSource {
   }
   
   async getStats({ dates, seasons, playerIds, gameIds, postseason, start_date, end_date }) {
+    let stats = [];
     const queryParams = this.generateQueryParams(dates, seasons, playerIds, gameIds, postseason, start_date, end_date)
-    const response = await this.get(queryParams);
-    return response.data.map(game => this.statsReducer(game));
+    let response = await this.get(queryParams);
+    stats = [...response.data];
+    while (response.meta.next_page) {
+      response = await this.get(`${queryParams}&page=${response.meta.next_page}`);
+      stats = [...stats, ...response.data];
+    }
+    stats = stats.map(game => this.statsReducer(game));
+    return stats;
   }
   
 }
