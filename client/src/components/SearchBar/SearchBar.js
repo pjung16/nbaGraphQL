@@ -90,12 +90,13 @@ class SearchBar extends Component {
   organizePlayerStats = (stats) => {
     let playerStats = {};
     stats.forEach((cur) => {
-      if (!playerStats[cur.player.id]) {
-        playerStats[cur.player.id] = [cur]
+      if (!playerStats[`${cur.player.first_name} ${cur.player.last_name}`]) {
+        playerStats[`${cur.player.first_name} ${cur.player.last_name}`] = [cur]
       } else {
-        playerStats[cur.player.id].push(cur)
+        playerStats[`${cur.player.first_name} ${cur.player.last_name}`].push(cur)
       }
     });
+    console.log(playerStats)
     return Object.entries(playerStats).map(cur => {
       return {
         id: cur[0],
@@ -143,7 +144,10 @@ class SearchBar extends Component {
                       if (data) {
                         const playerStats = this.organizePlayerStats(data.stats);
                         playerStats.forEach(cur => {
-                          let obj = { name: cur.id }
+                          let obj = { 
+                            name: cur.id,
+                            type: 'spline'
+                          }
                           obj.data = cur.stats.map(d => d.pts);
                           playerRecentStats = obj
                         })

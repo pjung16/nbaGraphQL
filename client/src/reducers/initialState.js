@@ -2,30 +2,39 @@ export default {
   players: [],
   graphDataType: 'pts',
   graphOptions: {
+    chart: {
+      backgroundColor: '#282C34',
+      type: 'line',
+      height: '75%'
+    },
+
     title: {
-      text: 'Solar Employment Growth by Sector, 2010-2016'
-    },
-
-    subtitle: {
-      text: 'Source: thesolarfoundation.com'
-    },
-
-    yAxis: {
-      title: {
-        text: 'Number of Employees'
+      text: 'Player Stats Comparison',
+      style: {
+        color: '#ffffff'
       }
     },
 
     xAxis: {
-      accessibility: {
-        rangeDescription: 'Range: 2010 to 2017'
+      labels: {
+        enabled: false
       }
     },
 
+    yAxis: {
+      title: {
+        text: 'Points'
+      }
+    },
+
+    tooltip: {
+      shared: true
+    },
+
     legend: {
-      layout: 'vertical',
-      align: 'right',
-      verticalAlign: 'middle'
+      itemStyle: {
+        color: '#ffffff',
+      }
     },
 
     plotOptions: {
@@ -36,6 +45,8 @@ export default {
         pointStart: 0
       }
     },
+
+    colors: ['#67DBF9', '#00E680', '#A722E5', '#FF4848', '#FF8413'],
 
     series: [],
 

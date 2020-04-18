@@ -4,7 +4,9 @@
 
 .blocks-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .App-logo {

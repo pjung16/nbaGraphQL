@@ -30,6 +30,7 @@ label {
   position: absolute;
   border: #ffffff 1px solid;
   width: 865px;
+  z-index: 1;
 }
 
 .dropdown-item {

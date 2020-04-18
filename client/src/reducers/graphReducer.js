@@ -6,6 +6,7 @@ export default function graphReducer(state = initialState.graphOptions, action) 
       return action.graphDataType
       
     case "UPDATE_GRAPH_OPTIONS":
+      console.log(state);
       return {
         series: [
           ...state.series,
