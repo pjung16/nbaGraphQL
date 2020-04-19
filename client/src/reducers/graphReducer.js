@@ -14,6 +14,19 @@ export default function graphReducer(state = initialState.graphOptions, action) 
         ]
       };
 
+    case "DELETE_PLAYER_FROM_SERIES":
+      console.log(state);
+      const tempState = state.series.filter((cur) => {
+        if (cur.name !== action.player) {
+          return cur
+        }
+      })
+      return {
+        series: [
+          ...tempState,
+        ]
+      };
+
      default:
        return state;
   }

@@ -65,7 +65,7 @@ class SearchBar extends Component {
     if (event.target.value.length > 2) {
       this.setState({
         search: event.target.value,
-        submitted: true
+        submitted: false
       });
     }
     else {
