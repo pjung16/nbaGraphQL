@@ -119,16 +119,6 @@ function PlayerStats({player: {id}, color: color, dispatch: dispatch}) {
           );
         }}
       </Query>
-      {/* <Query query={STAT_QUERY} variables = {{"playerId": id}}>
-        {({ loading, error, data }) => {
-          if (loading) return null;
-          if (error) console.log(error);
-          console.log(data.stats.sort(function(a, b) {
-            return (a.game.date > b.game.date) ? -1 : ((a.game.date < b.game.date) ? 1 : 0);
-          }))
-          return null
-        }}
-      </Query> */}
     </div>
   )
 } 

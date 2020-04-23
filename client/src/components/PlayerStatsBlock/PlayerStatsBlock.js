@@ -5,7 +5,7 @@ import './PlayerStatsBlock.css';
 function PlayerStatsBlock({ players }) {
   console.log(players);
 
-  const colors = ['#67DBF9', '#00E680', '#A722E5', '#FF4848', '#FF8413']
+  const colors = ['#67DBF9', '#00E680', '#A722E5', '#FF4848', '#FF8413'];
 
   return (
     <div className="player-stats-block">

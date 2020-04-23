@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { connect } from 'react-redux';
 import { addPlayer } from '../../actions/playerActions';
-import { updateGraphOptions } from '../../actions/graphActions';
+import { addPlayerToSeries } from '../../actions/graphActions';
 
 const PLAYER_QUERY = gql`
   query PlayerQuery($search: String!) {
@@ -148,13 +148,13 @@ class SearchBar extends Component {
                             name: cur.id,
                             type: 'spline'
                           }
-                          obj.data = cur.stats.map(d => d.pts);
+                          obj.data = cur.stats;
                           playerRecentStats = obj
                         })
                       }
                       return (<div key={player.id} className="dropdown-item" onClick={() => {
                         dispatch(addPlayer(player));
-                        dispatch(updateGraphOptions(playerRecentStats));
+                        dispatch(addPlayerToSeries(playerRecentStats));
                         this.setState({
                           search: '',
                           submitted: false

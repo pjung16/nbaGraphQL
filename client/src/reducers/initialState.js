@@ -1,7 +1,7 @@
 export default {
   players: [],
-  graphDataType: 'pts',
   graphOptions: {
+    graphDataType: 'pts',
     chart: {
       backgroundColor: '#282C34',
       type: 'line',
@@ -45,8 +45,6 @@ export default {
         pointStart: 0
       }
     },
-
-    colors: ['#67DBF9', '#00E680', '#A722E5', '#FF4848', '#FF8413'],
 
     series: [],
 
