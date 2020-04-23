@@ -33,11 +33,12 @@ export default function graphReducer(state = initialState.graphOptions, action) 
       return newAddedState;
 
     case "DELETE_PLAYER_FROM_SERIES":
-      const newRemovedState = {
-        series: state.series.filter((cur) => {
-          return (cur.name !== action.player)
-        })
-      }
+      const newRemovedState = JSON.parse(JSON.stringify(state))
+      console.log(newRemovedState)
+      newRemovedState.series = state.series.filter((cur) => {
+        return (cur.name !== action.player)
+      })
+      console.log(newRemovedState)
       newRemovedState.series.forEach((cur, i) => {
         cur['color'] = colors[i%5];
       })
