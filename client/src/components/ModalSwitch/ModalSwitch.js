@@ -5,6 +5,8 @@ import {
   useLocation,
 } from "react-router-dom";
 import Home from '../Home/Home';
+import PlayerProfile from '../PlayerProfile/PlayerProfile';
+import Modal from '../Modal/Modal';
 
 function ModalSwitch() {
   let location = useLocation();
@@ -22,11 +24,11 @@ function ModalSwitch() {
     <div>
       <Switch location={background || location}>
         <Route exact path="/" children={<Home />} />
-        {/* <Route path="/player/:id" children={<PlayerStats />} /> */}
+        <Route path="/player/:id" children={<PlayerProfile />} />
       </Switch>
 
       {/* Show the modal when a background page is set */}
-      {/* {background && <Route path="/player/:id" children={<PlayerStats />} />} */}
+      {background && <Route path="/player/:id" children={<Modal />} />}
     </div>
   );
 }

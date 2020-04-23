@@ -9,7 +9,6 @@ import { updatePlayersData } from '../../actions/graphActions';
 const STATS_QUERY = gql`
   query PlayerQuery($playerIds: [ID!]) {
     stats (playerIds: $playerIds, seasons: [2019]) {
-      min
       pts
       reb
       ast

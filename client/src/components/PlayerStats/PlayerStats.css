@@ -1,5 +1,5 @@
 .player-stat-block {
-  width: 394px;
+  width: 28vw;
   background-color: #343A40;
   color: white;
   border: white 1px solid;
@@ -7,7 +7,7 @@
 }
 
 .player-stat-head {
-  height: 36px;
+  min-height: 36px;
   font-size: 24px;
   border: white 1px solid;
   padding-left: 15px;
@@ -15,7 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  line-height: 0px;
+  text-align: left;
 }
 
 .player-stat-row {

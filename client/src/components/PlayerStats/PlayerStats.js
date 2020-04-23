@@ -1,4 +1,8 @@
 import React from 'react';
+import {
+  Link,
+  useLocation,
+} from "react-router-dom";
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { connect } from 'react-redux';
@@ -32,7 +36,8 @@ const STATS_QUERY = gql`
   }
 `;
 
-function PlayerStats({player: {id}, color: color, dispatch: dispatch}) {
+function PlayerStats({player: {id}, color, dispatch}) {
+  const location = useLocation();
 
   return (
     <div>
@@ -49,10 +54,20 @@ function PlayerStats({player: {id}, color: color, dispatch: dispatch}) {
                 <div>{`${player.first_name} ${player.last_name}`}</div>
                 <div style={{display: 'flex', alignItems: 'center'}}>
                   <div>
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5.00001 24C5.00001 24.5523 5.44772 25 6.00001 25H15C15.5523 25 16 24.5523 16 24C16 23.4477 15.5523 23 15 23H7.00001V15C7.00001 14.4477 6.55229 14 6.00001 14C5.44772 14 5.00001 14.4477 5.00001 15V24ZM13.4747 15.1111L5.2929 23.2929L6.70711 24.7071L14.8889 16.5253L13.4747 15.1111Z" fill="white"/>
-                      <path d="M25 6.00001C25 5.44772 24.5523 5.00001 24 5.00001H15C14.4477 5.00001 14 5.44772 14 6.00001C14 6.55229 14.4477 7.00001 15 7.00001H23V15C23 15.5523 23.4477 16 24 16C24.5523 16 25 15.5523 25 15V6.00001ZM16.5253 14.8889L24.7071 6.70711L23.2929 5.2929L15.1111 13.4747L16.5253 14.8889Z" fill="white"/>
-                    </svg>
+                    <Link
+                      key={id}
+                      to={{
+                        pathname: `/player/${id}`,
+                        // This is the trick! This link sets
+                        // the `background` in location state.
+                        state: { background: location }
+                      }}
+                    >
+                      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.00001 24C5.00001 24.5523 5.44772 25 6.00001 25H15C15.5523 25 16 24.5523 16 24C16 23.4477 15.5523 23 15 23H7.00001V15C7.00001 14.4477 6.55229 14 6.00001 14C5.44772 14 5.00001 14.4477 5.00001 15V24ZM13.4747 15.1111L5.2929 23.2929L6.70711 24.7071L14.8889 16.5253L13.4747 15.1111Z" fill="white"/>
+                        <path d="M25 6.00001C25 5.44772 24.5523 5.00001 24 5.00001H15C14.4477 5.00001 14 5.44772 14 6.00001C14 6.55229 14.4477 7.00001 15 7.00001H23V15C23 15.5523 23.4477 16 24 16C24.5523 16 25 15.5523 25 15V6.00001ZM16.5253 14.8889L24.7071 6.70711L23.2929 5.2929L15.1111 13.4747L16.5253 14.8889Z" fill="white"/>
+                      </svg>
+                    </Link>
                   </div>
                   <div style={{marginLeft: '10px'}} onClick={() => {
                     dispatch(deletePlayer(id));

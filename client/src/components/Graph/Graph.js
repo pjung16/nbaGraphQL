@@ -11,7 +11,6 @@ function Graph({ graphOptions, players }) {
     { label: "AST", value: "ast" },
     { label: "STL", value: "stl" },
     { label: "BLK", value: "blk" },
-    { label: "MIN", value: "min" },
     { label: "FG%", value: "fg_pct" },
     { label: "3FG%", value: "fg3_pct" },
     { label: "FT%", value: "ft_pct" },
