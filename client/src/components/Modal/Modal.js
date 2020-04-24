@@ -3,6 +3,7 @@ import {
   useHistory,
   // useParams
 } from "react-router-dom";
+import PlayerProfile from '../PlayerProfile/PlayerProfile';
 
 function Modal() {
   let history = useHistory();
@@ -15,7 +16,6 @@ function Modal() {
 
   return (
     <div
-      onClick={back}
       style={{
         position: "absolute",
         top: 0,
@@ -29,18 +29,13 @@ function Modal() {
         className="modal"
         style={{
           position: "absolute",
-          background: "#fff",
           top: 25,
           left: "10%",
           right: "10%",
-          padding: 15,
           border: "2px solid #444"
         }}
       >
-        <h1>hi</h1>
-        <button type="button" onClick={back}>
-          Close
-        </button>
+        <PlayerProfile />
       </div>
     </div>
   );

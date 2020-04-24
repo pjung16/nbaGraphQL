@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import './SearchBar.css';
+import './DropdownMenu.css';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { connect } from 'react-redux';
@@ -58,11 +58,14 @@ function DropdownMenu(props) {
 
   return (
     <div>
-      <select onChange={e => {
-        setValue(e.currentTarget.value);
-        dispatch(changeGraphDataType(e.currentTarget.value));
-        dispatch(updatePlayersData(playerRecentStats))
-      }}>
+      <select 
+        className="dropdown-menu-container"
+        onChange={e => {
+          setValue(e.currentTarget.value);
+          dispatch(changeGraphDataType(e.currentTarget.value));
+          dispatch(updatePlayersData(playerRecentStats))
+        }} 
+      >
         {props.players.map(player => (
           <Query query={STATS_QUERY} variables = {{ playerIds: [player.player.id] }}>
             {({ loading, error, data }) => {

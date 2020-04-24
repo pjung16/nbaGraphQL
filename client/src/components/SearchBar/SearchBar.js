@@ -24,29 +24,29 @@ const PLAYER_QUERY = gql`
 `;
 
 const STATS_QUERY = gql`
-    query PlayerQuery($playerIds: [ID!]) {
-      stats (playerIds: $playerIds, seasons: [2019]) {
-        min
-        pts
-        reb
-        ast
-        stl
-        blk
-        fg_pct
-        fg3_pct
-        ft_pct
-        turnover
-        player {
-          first_name
-          last_name
-          id
-        }
-        game {
-          date
-        }
+  query PlayerQuery($playerIds: [ID!]) {
+    stats (playerIds: $playerIds, seasons: [2019]) {
+      min
+      pts
+      reb
+      ast
+      stl
+      blk
+      fg_pct
+      fg3_pct
+      ft_pct
+      turnover
+      player {
+        first_name
+        last_name
+        id
+      }
+      game {
+        date
       }
     }
-  `;
+  }
+`;
 
 class SearchBar extends Component {
   constructor(props) {

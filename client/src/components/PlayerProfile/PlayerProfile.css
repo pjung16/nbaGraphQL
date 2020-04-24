@@ -1,0 +1,71 @@
+.profile-container {
+  background-color: #282C34;
+  padding: 45px 140px;
+}
+
+.player-name {
+  color: #ffffff;
+  font-size: 36px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.table-title {
+  color: #ffffff;
+  font-size: 30px;
+  text-align: left;
+  margin-top: 25px;
+  margin-bottom: 5px;
+}
+
+table {
+  color: #ffffff;
+  background-color: #343A40;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  position: relative;
+}
+
+tr {
+  height: 50px;
+  font-size: 24px;
+}
+
+th {
+  border: 1px solid #454d55;
+}
+
+td {
+  border: 1px solid #454d55;
+}
+
+.previous-game-table-container {
+  height: 45vh;
+  overflow: scroll;
+}
+
+.previous-game-table-header th {
+  position: sticky;
+  top: 0;
+  background-color: #343A40;
+  border: 1px solid #454d55;
+}
+
+.close-button {
+  position: absolute;
+  right: -95px;
+  top: 0;
+  cursor: pointer;
+}
+
+.home-button {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 120px;
+  margin-bottom: 10px;
+}
