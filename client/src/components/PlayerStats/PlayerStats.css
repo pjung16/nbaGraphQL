@@ -59,3 +59,8 @@
   width: 19%;
 }
 
+@media only screen and (max-width: 950px) {
+  .player-stat-block {
+    width: 85vw;
+  }
+}

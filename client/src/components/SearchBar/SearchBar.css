@@ -28,16 +28,33 @@ label {
 
 .dropdown {
   position: absolute;
-  border: #ffffff 1px solid;
-  width: 865px;
+  width: calc(55vw + 15px);
   z-index: 1;
 }
 
 .dropdown-item {
   height: 70px;
-  border-top: #ffffff 1px solid;
+  border-top: #454d55 2px solid;
   background-color: #343A40;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  padding-left: 15px;
+}
+
+@media only screen and (max-width: 950px) {
+  .search-field {
+    height: 40px;
+    font-size: 20px;
+  }
+  .add-button {
+    height: 40px;
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .search-field {
+    width: 60vw;
+  }
 }

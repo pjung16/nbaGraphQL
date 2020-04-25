@@ -118,7 +118,7 @@ class SearchBar extends Component {
               type={'text'}
               value={this.state.search}
               onChange={this.handleSearchChange}
-              placeholder={'Add a player to compare...'}
+              placeholder={'Search player...'}
               className="search-field"
             />
           </label>

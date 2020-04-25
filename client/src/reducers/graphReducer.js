@@ -1,7 +1,7 @@
 import initialState from './initialState';
 
 export default function graphReducer(state = initialState.graphOptions, action) {
-  const colors = ['#67DBF9', '#00E680', '#A722E5', '#FF4848', '#FF8413'];
+  const colors = ['#67DBF9', '#00E680', '#A722E5', '#FF4848', '#FF8413', '#FFEB38'];
 
   switch (action.type) {
     case 'CHANGE_GRAPH_DATATYPE':

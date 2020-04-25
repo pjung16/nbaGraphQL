@@ -17,12 +17,12 @@ function Graph({ graphOptions, players }) {
     { label: "TO", value: "turnover" },
   ]
 
-  return (
+  return Array.isArray(players) && players.length ?  (
     <div className="graph-container">
       <DropdownMenu items={menuItems} options={graphOptions} players={players} />
-      <HighchartsReact highcharts={Highcharts} options={graphOptions} />
+      <HighchartsReact highcharts={Highcharts} options={graphOptions} containerProps={{ style: { height: "100%" } }}/>
     </div>
-  );
+  ) : null;
 }
 
 export default Graph;

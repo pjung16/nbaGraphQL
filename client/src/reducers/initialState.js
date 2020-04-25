@@ -5,7 +5,6 @@ export default {
     chart: {
       backgroundColor: '#282C34',
       type: 'line',
-      height: '75%'
     },
 
     title: {
