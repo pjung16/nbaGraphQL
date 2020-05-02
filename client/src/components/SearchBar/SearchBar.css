@@ -21,6 +21,8 @@
   font-size: 36px;
   font-family: Lato;
   -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
 }
 
 label {
