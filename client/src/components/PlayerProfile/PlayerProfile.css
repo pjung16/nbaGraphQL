@@ -40,6 +40,10 @@ td {
   border: 1px solid #454d55;
 }
 
+.season-average-table-container {
+  overflow: scroll;
+}
+
 .previous-game-table-container {
   height: 45vh;
   overflow: scroll;
@@ -68,4 +72,35 @@ td {
   justify-content: space-between;
   width: 120px;
   margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 950px) {
+  .profile-container {
+    padding: 10px;
+  }
+  .close-button {
+    right: 5px;
+    top: 5px;
+  }
+  tr {
+    font-size: 16px;
+    height: 40px;
+  }
+  th {
+    padding: 0px 8px;
+  }
+  td {
+    padding: 0px 8px;
+  }
+  .player-name {
+    font-size: 26px;
+  }
+  
+  .table-title {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
 }

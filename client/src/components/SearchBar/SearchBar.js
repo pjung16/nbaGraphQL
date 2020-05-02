@@ -136,7 +136,7 @@ class SearchBar extends Component {
             return (
               <div className="dropdown">
                 {data.activePlayerSearch.map(player => (
-                  <Query query={STATS_QUERY} variables = {{ playerIds: [player.id] }}>
+                  <Query key={player.id} query={STATS_QUERY} variables = {{ playerIds: [player.id] }}>
                     {({ loading, error, data }) => {
                       if (loading) return null;
                       if (error) console.log(error);

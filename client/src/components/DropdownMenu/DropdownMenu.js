@@ -67,7 +67,7 @@ function DropdownMenu(props) {
         }} 
       >
         {props.players.map(player => (
-          <Query query={STATS_QUERY} variables = {{ playerIds: [player.player.id] }}>
+          <Query key={player.player.id} query={STATS_QUERY} variables = {{ playerIds: [player.player.id] }}>
             {({ loading, error, data }) => {
               if (loading) return null;
               if (error) console.log(error);

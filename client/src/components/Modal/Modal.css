@@ -1,0 +1,28 @@
+.modal-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.modal {
+  position: fixed;
+  top: 25px;
+  left: 10%;
+  right: 10%;
+  border: 2px solid #444;
+}
+
+@media only screen and (max-width: 950px) {
+  .modal {
+    top: 15vw;
+    left: 3%;
+    right: 3%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+}

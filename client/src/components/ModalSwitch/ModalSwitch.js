@@ -13,7 +13,7 @@ function ModalSwitch() {
   let background = location.state && location.state.background;
 
   return (
-    <div>
+    <>
       <Switch location={background || location}>
         <Route exact path="/" children={<Home />} />
         <Route exact path="/player/:id" children={<PlayerProfile />} />
@@ -21,7 +21,7 @@ function ModalSwitch() {
 
       {/* Show the modal when a background page is set */}
       {background && <Route path="/player/:id" children={<Modal />} />}
-    </div>
+    </>
   );
 }
 

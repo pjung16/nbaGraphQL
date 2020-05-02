@@ -10,7 +10,7 @@ function PlayerStatsBlock({ players }) {
   return (
     <div className="player-stats-block">
       {players ? players.map((player, i) => (
-        <PlayerStats key={player.player.id} player={player.player} color={colors[i%5]} />
+        <PlayerStats key={player.player.id} player={player.player} color={colors[i%6]} />
       )) : null}
     </div>
   );

@@ -93,38 +93,40 @@ function PlayerProfile() {
               }
               <div className="player-name">{data.player.first_name} {data.player.last_name}</div>
               <div className="table-title">Season Averages</div>
-              <table>
-                <tr>
-                  <th>GP</th>
-                  <th>Min</th>
-                  <th>Pts</th>
-                  <th>Reb</th>
-                  <th>Ast</th>
-                  <th>Stl</th>
-                  <th>Blk</th>
-                  <th>FG%</th>
-                  <th>3FG%</th>
-                  <th>FT%</th>
-                  <th>TO</th>
-                </tr>
-                <tr>
-                  {data.season.map(player =>(
-                    <>
-                    <td>{player.games_played}</td>
-                    <td>{player.min}</td>
-                    <td>{player.pts}</td>
-                    <td>{player.reb}</td>
-                    <td>{player.ast}</td>
-                    <td>{player.stl}</td>
-                    <td>{player.blk}</td>
-                    <td>{player.fg_pct}</td>
-                    <td>{player.fg3_pct}</td>
-                    <td>{player.ft_pct}</td>
-                    <td>{player.turnover}</td>
-                    </>
-                  ))}
-                </tr>
-              </table>
+              <div className="season-average-table-container">
+                <table>
+                  <tr>
+                    <th>GP</th>
+                    <th>Min</th>
+                    <th>Pts</th>
+                    <th>Reb</th>
+                    <th>Ast</th>
+                    <th>Stl</th>
+                    <th>Blk</th>
+                    <th>FG%</th>
+                    <th>3FG%</th>
+                    <th>FT%</th>
+                    <th>TO</th>
+                  </tr>
+                  <tr>
+                    {data.season.map(player =>(
+                      <>
+                      <td>{player.games_played}</td>
+                      <td>{player.min}</td>
+                      <td>{player.pts}</td>
+                      <td>{player.reb}</td>
+                      <td>{player.ast}</td>
+                      <td>{player.stl}</td>
+                      <td>{player.blk}</td>
+                      <td>{player.fg_pct}</td>
+                      <td>{player.fg3_pct}</td>
+                      <td>{player.ft_pct}</td>
+                      <td>{player.turnover}</td>
+                      </>
+                    ))}
+                  </tr>
+                </table>
+              </div>
               <div className="table-title">Previous Games</div>
               <div className="previous-game-table-container">
                 <table>

@@ -74,8 +74,8 @@ function PlayerStats({player: {id}, color, dispatch}) {
                     dispatch(deletePlayerFromSeries(`${player.first_name} ${player.last_name}`));
                   }}>
                     <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <line x1="0.707107" y1="0.792893" x2="19.799" y2="19.8848" stroke="white" stroke-width="2"/>
-                      <line x1="19.8071" y1="0.707107" x2="0.71523" y2="19.799" stroke="white" stroke-width="2"/>
+                      <line x1="0.707107" y1="0.792893" x2="19.799" y2="19.8848" stroke="white" strokeWidth="2"/>
+                      <line x1="19.8071" y1="0.707107" x2="0.71523" y2="19.799" stroke="white" strokeWidth="2"/>
                     </svg>
                   </div>
                 </div>
@@ -115,15 +115,15 @@ function PlayerStats({player: {id}, color, dispatch}) {
               <div className="player-stat-row">
                 <div className="w-27" style={{borderColor: color}}>
                   <div className="stat-name">FG%</div>
-                  <div className="stat-num">{stats.fg_pct*100}</div>
+                  <div className="stat-num">{+(stats.fg_pct*100).toFixed(2)}</div>
                 </div>
                 <div className="w-27" style={{borderColor: color}}>
                   <div className="stat-name">3FG%</div>
-                  <div className="stat-num">{stats.fg3_pct*100}</div>
+                  <div className="stat-num">{+(stats.fg3_pct*100).toFixed(2)}</div>
                 </div>
                 <div className="w-27" style={{borderColor: color}}>
                   <div className="stat-name">FT%</div>
-                  <div className="stat-num">{stats.ft_pct}</div>
+                  <div className="stat-num">{+(stats.ft_pct*100).toFixed(2)}</div>
                 </div>
                 <div className="w-19" style={{borderColor: color}}>
                   <div className="stat-name">TO</div>
