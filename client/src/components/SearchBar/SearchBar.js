@@ -112,7 +112,7 @@ class SearchBar extends Component {
 
     return (
       <div className="searchbar">
-        <div>
+        <form onSubmit={this.handleSubmit}>
           <label>
             <input
               type={'text'}
@@ -122,11 +122,12 @@ class SearchBar extends Component {
               className="search-field"
             />
           </label>
-          <button 
-            onClick={this.handleSubmit}
+          <input 
+            type="submit" 
+            value="Search" 
             className="add-button"
-          >Search</button>
-        </div>
+          />
+        </form>
         {this.state.submitted ? <Query query={PLAYER_QUERY} variables = {{ search: this.state.search }}>
           {({ loading, error, data }) => {
             if (loading) return null;
