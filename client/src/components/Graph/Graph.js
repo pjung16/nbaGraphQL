@@ -22,7 +22,9 @@ function Graph({ graphOptions, players }) {
       <DropdownMenu items={menuItems} options={graphOptions} players={players} />
       <HighchartsReact highcharts={Highcharts} options={graphOptions} containerProps={{ style: { height: "100%" } }}/>
     </div>
-  ) : null;
+  ) : (
+    <div className="page-empty-text">Search a player's name to get started</div>
+  );
 }
 
 export default Graph;

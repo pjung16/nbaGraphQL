@@ -1,4 +1,5 @@
 import initialState from './initialState';
+import teams from '../teams.json';
 
 export default function graphReducer(state = initialState.graphOptions, action) {
   const colors = ['#67DBF9', '#00E680', '#A722E5', '#FF4848', '#FF8413', '#FFEB38'];
@@ -27,13 +28,30 @@ export default function graphReducer(state = initialState.graphOptions, action) 
       newUpdatedState.series = action.stats;
       newUpdatedState.series.forEach((cur, i) => {
         cur.color = colors[i%6];
-        cur.data = cur.data.map(d => d[state.graphDataType]);
+        cur.data = cur.data.map(d => {
+          let date = new Date(d.game.date);
+          let opponent = d.player.team_id !== d.game.visitor_team_id ? d.game.visitor_team_id : d.game.home_team_id;
+          return {
+            y: d[state.graphDataType],
+            gameData: `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()} vs ${teams[opponent].name}`,
+            playerName: `${d.player.first_name} ${d.player.last_name}`,
+          }
+        });
       })
       return newUpdatedState;
       
     case "ADD_PLAYER_TO_SERIES":
       const newAddedState = JSON.parse(JSON.stringify(state));
-      action.options.data = action.options.data.map(d => d[state.graphDataType]);
+      action.options.data = action.options.data.map(d => {
+        let date = new Date(d.game.date);
+        console.log(d)
+        let opponent = d.player.team_id === d.game.visitor_team_id ? d.game.home_team_id : d.game.visitor_team_id;
+        return {
+          y: d[state.graphDataType],
+          gameData: `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()} vs ${teams[opponent].name}`,
+          playerName: `${d.player.first_name} ${d.player.last_name}`,
+        }
+      });
       newAddedState.series = [
         ...newAddedState.series,
         action.options

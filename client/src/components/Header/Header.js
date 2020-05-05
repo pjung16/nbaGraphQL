@@ -5,7 +5,7 @@ import SearchBar from '../SearchBar/SearchBar';
 function Header() {
   return (
     <div className="header">
-      <div>NBA Stats</div>
+      <div>NBA GraphQL</div>
       <SearchBar />
     </div>
   );

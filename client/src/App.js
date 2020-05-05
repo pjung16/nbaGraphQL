@@ -6,7 +6,6 @@ import ModalSwitch from './components/ModalSwitch/ModalSwitch';
 import './App.css';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-boost';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const client = new ApolloClient({
   uri: '/graphql'

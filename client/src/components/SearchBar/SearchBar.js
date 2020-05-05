@@ -40,9 +40,12 @@ const STATS_QUERY = gql`
         first_name
         last_name
         id
+        team_id
       }
       game {
         date
+        visitor_team_id
+        home_team_id
       }
     }
   }
@@ -58,7 +61,6 @@ class SearchBar extends Component {
 
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.playerClicked = this.playerClicked.bind(this);
   }
 
   handleSearchChange(event) {
@@ -83,10 +85,6 @@ class SearchBar extends Component {
     });
   }
 
-  playerClicked(event) {
-    console.log(event.target)
-  }
-
   organizePlayerStats = (stats) => {
     let playerStats = {};
     stats.forEach((cur) => {
@@ -96,7 +94,6 @@ class SearchBar extends Component {
         playerStats[`${cur.player.first_name} ${cur.player.last_name}`].push(cur)
       }
     });
-    console.log(playerStats)
     return Object.entries(playerStats).map(cur => {
       return {
         id: cur[0],
@@ -107,6 +104,16 @@ class SearchBar extends Component {
     })
   }
 
+  checkPlayerDuplicate = (player) => {
+    const { players } = this.props;
+    for (let p in players){
+      if (players[p].player.id === player.id) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   render() {
     const { dispatch } = this.props;
 
@@ -115,10 +122,10 @@ class SearchBar extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             <input
-              type={'text'}
+              type="text"
               value={this.state.search}
               onChange={this.handleSearchChange}
-              placeholder={'Search player...'}
+              placeholder="Search player..."
               className="search-field"
             />
           </label>
@@ -153,8 +160,10 @@ class SearchBar extends Component {
                         })
                       }
                       return (<div key={player.id} className="dropdown-item" onClick={() => {
-                        dispatch(addPlayer(player));
-                        dispatch(addPlayerToSeries(playerRecentStats));
+                        if (!this.checkPlayerDuplicate(player)) {
+                          dispatch(addPlayer(player));
+                          dispatch(addPlayerToSeries(playerRecentStats));
+                        }
                         this.setState({
                           search: '',
                           submitted: false
@@ -174,4 +183,12 @@ class SearchBar extends Component {
   }
 }
 
-export default connect()(SearchBar);
+const getAllPlayers = (players) => {
+  return players
+};
+
+const mapStateToProps = state => ({
+  players: getAllPlayers(state.players)
+});
+
+export default connect(mapStateToProps)(SearchBar);

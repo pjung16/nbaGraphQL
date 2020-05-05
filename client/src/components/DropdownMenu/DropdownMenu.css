@@ -6,7 +6,8 @@
   font-size: 20px;
   height: 50px;
   width: 100px;
-  -webkit-appearance: none;
+  /* -webkit-appearance: none; */
+  margin-bottom: 15px;
 }
 
 select {
@@ -15,5 +16,11 @@ select {
   border: 0;
   outline: 1px solid #343A40;
   outline-offset: -1px;
+}
+
+.dropdown-text-before {
+  font-size: 20px;
+  color: #ffffff;
+  margin-right: 15px;
 }
 

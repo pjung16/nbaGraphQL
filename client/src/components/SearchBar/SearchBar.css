@@ -6,23 +6,28 @@
   background-color: #343A40;
   color: #C4C4C4;
   border: none;
-  height: 70px;
-  width: 55vw;
+  height: 60px;
+  width: 52vw;
   padding-left: 15px;
   font-size: 36px;
   font-family: Lato;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  box-sizing: border-box;
 }
 
 .add-button {
   background-color: #67DBF9;
   color: #343A40;
   border: none;
-  height: 70px;
+  height: 60px;
   font-size: 36px;
   font-family: Lato;
   -webkit-appearance: none;
   -webkit-border-radius: 0;
   border-radius: 0;
+  padding: 0 10px;
 }
 
 label {
@@ -31,18 +36,21 @@ label {
 
 .dropdown {
   position: absolute;
-  width: calc(55vw + 15px);
+  width: 52vw;
   z-index: 1;
+  max-height: 450px;
+  overflow-y: scroll;
 }
 
 .dropdown-item {
-  height: 70px;
+  min-height: 60px;
   border-top: #454d55 2px solid;
   background-color: #343A40;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding-left: 15px;
+  padding: 10px 0 10px 15px;
+  box-sizing: border-box;
 }
 
 @media only screen and (max-width: 950px) {
@@ -54,10 +62,20 @@ label {
     height: 40px;
     font-size: 20px;
   }
+  
+  .dropdown-item {
+    min-height: 40px;
+    font-size: 20px;
+  }
 }
 
 @media only screen and (max-width: 600px) {
   .search-field {
     width: 60vw;
+  }
+
+  .dropdown {
+    width: 60vw;
+    max-height: 400px;
   }
 }

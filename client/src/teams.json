@@ -1,0 +1,122 @@
+{
+  "1": {
+    "abbreviation": "ATL",
+    "name": "Hawks"
+  },
+  "2": {
+    "abbreviation": "BOS",
+    "name": "Celtics"
+  },
+  "3": {
+    "abbreviation": "BKN",
+    "name": "Nets"
+  },
+  "4": {
+    "abbreviation": "CHA",
+    "name": "Hornets"
+  },
+  "5": {
+    "abbreviation": "CHI",
+    "name": "Bulls"
+  },
+  "6": {
+    "abbreviation": "CLE",
+    "name": "Cavaliers"
+  },
+  "7": {
+    "abbreviation": "DAL",
+    "name": "Mavericks"
+  },
+  "8": {
+    "abbreviation": "DEN",
+    "name": "Nuggets"
+  },
+  "9": {
+    "abbreviation": "DET",
+    "name": "Pistons"
+  },
+  "10": {
+    "abbreviation": "GSW",
+    "name": "Warriors"
+  },
+  "11": {
+    "abbreviation": "HOU",
+    "name": "Rockets"
+  },
+  "12": {
+    "abbreviation": "IND",
+    "name": "Pacers"
+  },
+  "13": {
+    "abbreviation": "LAC",
+    "name": "Clippers"
+  },
+  "14": {
+    "abbreviation": "LAL",
+    "name": "Lakers"
+  },
+  "15": {
+    "abbreviation": "MEM",
+    "name": "Grizzlies"
+  },
+  "16": {
+    "abbreviation": "MIA",
+    "name": "Heat"
+  },
+  "17": {
+    "abbreviation": "MIL",
+    "name": "Bucks"
+  },
+  "18": {
+    "abbreviation": "MIN",
+    "name": "Timberwolves"
+  },
+  "19": {
+    "abbreviation": "NOP",
+    "name": "Pelicans"
+  },
+  "20": {
+    "abbreviation": "NYK",
+    "name": "Knicks"
+  },
+  "21": {
+    "abbreviation": "OKC",
+    "name": "Thunder"
+  },
+  "22": {
+    "abbreviation": "ORL",
+    "name": "Magic"
+  },
+  "23": {
+    "abbreviation": "PHI",
+    "name": "76ers"
+  },
+  "24": {
+    "abbreviation": "PHX",
+    "name": "Suns"
+  },
+  "25": {
+    "abbreviation": "POR",
+    "name": "Trail Blazers"
+  },
+  "26": {
+    "abbreviation": "SAC",
+    "name": "Kings"
+  },
+  "27": {
+    "abbreviation": "SAS",
+    "name": "Spurs"
+  },
+  "28": {
+    "abbreviation": "TOR",
+    "name": "Raptors"
+  },
+  "29": {
+    "abbreviation": "UTA",
+    "name": "Jazz"
+  },
+  "30": {
+    "abbreviation": "WAS",
+    "name": "Wizards"
+  }
+}

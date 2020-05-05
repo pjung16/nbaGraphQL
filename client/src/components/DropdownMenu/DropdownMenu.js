@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './DropdownMenu.css';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
@@ -22,16 +22,18 @@ const STATS_QUERY = gql`
         first_name
         last_name
         id
+        team_id
       }
       game {
         date
+        visitor_team_id
+        home_team_id
       }
     }
   }
 `;
 
 function DropdownMenu(props) {
-  const [value, setValue] = useState();
   const { dispatch } = props;
 
   const organizePlayerStats = (stats) => {
@@ -58,10 +60,10 @@ function DropdownMenu(props) {
 
   return (
     <div>
+      <span className="dropdown-text-before">Last Eight</span>
       <select 
         className="dropdown-menu-container"
         onChange={e => {
-          setValue(e.currentTarget.value);
           dispatch(changeGraphDataType(e.currentTarget.value));
           dispatch(updatePlayersData(playerRecentStats))
         }} 

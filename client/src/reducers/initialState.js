@@ -8,7 +8,7 @@ export default {
     },
 
     title: {
-      text: 'Player Stats Comparison',
+      text: null,
       style: {
         color: '#ffffff'
       }
@@ -27,6 +27,20 @@ export default {
     },
 
     tooltip: {
+      backgroundColor: '#343A40',
+      borderWidth: 0,
+      style:{
+        color:'#ffffff',
+        fontSize:'15px',
+        whiteSpace:'nowrap',
+        fontFamily: 'Lato',
+      },
+      padding: 15,
+      headerFormat: null,
+      pointFormat: `
+        <b>{point.playerName}</b><br/>
+        <span style="color:{point.color}">●</span> {point.gameData}: <b>{point.y}</b><br/>
+      `,
       shared: true
     },
 
