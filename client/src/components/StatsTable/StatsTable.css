@@ -1,0 +1,21 @@
+table {
+  color: #ffffff;
+  background-color: #343A40;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  position: relative;
+}
+
+tr {
+  height: 50px;
+  font-size: 24px;
+}
+
+th {
+  border: 1px solid #454d55;
+}
+
+td {
+  border: 1px solid #454d55;
+}

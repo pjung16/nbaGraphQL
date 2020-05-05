@@ -58,8 +58,6 @@ function PlayerStats({player: {id}, color, dispatch}) {
                       key={id}
                       to={{
                         pathname: `/player/${id}`,
-                        // This is the trick! This link sets
-                        // the `background` in location state.
                         state: { background: location }
                       }}
                     >
